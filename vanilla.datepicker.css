@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+
+.vanilla-datepicker {
+    background:#272727;
+    border:solid 1px #979797;
+    border-radius:3px;
+    color:#DDDDDD;
+    font-size: 13px;
+    position: absolute;
+    width:200px;
+}
+.vanilla-datepicker > .title-nav {
+    align-items:center;
+    background:#222;
+    border:solid 1px #979797;
+    border-radius:3px;
+    display:flex;
+    flex-direction:row;
+    font-weight:bold;
+    justify-content:space-between;
+    margin:2px;
+    width:auto;
+}
+.vanilla-datepicker > .title-nav > .month-navigate,
+.vanilla-datepicker > .title-nav > .year-navigate {
+    align-items:center;
+    border:solid 1px #222;
+    border-radius:5px;
+    cursor:pointer;
+    display:flex;
+    flex:0 15px;
+    font-weight:bold;
+    height:15px;
+    justify-content:center;
+    margin:1px;
+    padding:2px;
+    text-align: center;
+}
+.vanilla-datepicker > .title-nav > .month-navigate:first-child,
+.vanilla-datepicker > .title-nav > .year-navigate:first-child {
+    align-self:flex-start;
+}
+.vanilla-datepicker > .title-nav > .month-navigate:hover,
+.vanilla-datepicker > .title-nav > .year-navigate:hover {
+    border:solid 1px #979797;
+}
+.vanilla-datepicker > .week-header {
+    font-weight: bold;
+}
+.vanilla-datepicker > .week-header,
+.vanilla-datepicker > .week {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+.vanilla-datepicker > .week-header > div {
+    align-items:flex-start;
+    display:flex;
+    flex:1;
+    justify-content:center;
+}
+.vanilla-datepicker > .week > div {
+    align-items:flex-end;
+    border:solid 1px #979797;
+    cursor:pointer;
+    display:flex;
+    flex:1;
+    justify-content:flex-end;
+    margin:1px;
+    padding:2px;
+}
+.vanilla-datepicker > .week > div.no-select {
+    cursor:auto;
+    background:#979797;
+    color:#555;
+}
+.vanilla-datepicker > .week > div.selected {
+    background-color:#415E82;
+    font-weight:bold;
+}
+.vanilla-datepicker > .week > div:not(.no-select):hover {
+    background:#555;
+}

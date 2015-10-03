@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script src="../vanilla.datepicker.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="../vanilla.datepicker.css" type="text/css" media="screen" />
+        <style type="text/css">
+        @import url(http://fonts.googleapis.com/css?family=Roboto:100,300);
+        body {
+            box-shadow:0px 0px 5px #000;
+            display:flex;
+            flex-direction:column;
+            font-family:Roboto, Arial, sans-sherif;
+            font-size:16px;
+            font-weight:300;
+            margin:0 auto;
+            padding:10px 20px;
+            width:1000px;
+        }
+        h1, h2 {
+            color:#6f3e92;
+            font-size:48px;
+            font-weight:normal;
+        }
+        h2 {
+            font-size:30px;
+            margin-left:20px;
+        }
+        pre {
+            box-shadow: 0px 0px 2px #000;
+            background-color:#F0F0F0;
+        }
+        a {
+            cursor:pointer;
+            text-decoration:none;
+            color:#6f3e92;
+            transition:all 200ms ease;
+        }
+        a:hover {
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.333);
+        }
+        body > div[id^=example] .highlight { background:yellow; }
+        div.example a { padding:5px; }
+        .highlight {
+            background-color:rgba(0,0,0,0.04);
+            border-radius:3px;
+            padding:0 2px;
+        }
+
+        /* Context menu icons */
+        #vanilla-ctxm .icon-highlight {
+            background-image:url(icon-highlight.png);
+        }
+        #vanilla-ctxm .icon-delete {
+            background-image:url(icon-delete.png);
+        }
+        pre {
+            overflow:auto;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Vanilla datepicker</h1>
+
+        Vanilla datepicker is a simple datepicker in Vanilla-JS.
+
+        <h2>Open datepicker</h2>
+        <!-- Single image automatic -->
+        <p class="tutorial">Add <span class="highlight">data-modal</span> attribute to your links and use <span class="highlight">href</span> attribute to define what should be opened in the modal.</p>
+        <div id="example-1" class="example">
+            <input type="text" class="datepicker" />
+            <input type="text" class="datepicker" />
+            <input type="text" class="datepicker" />
+        </div>
+        <script type="text/javascript">
+        datepicker( '.datepicker', {
+            firstDayOfWeek: 1,
+            months: {
+                short: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+                long: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+            },
+            weekdays: {
+                short: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                long: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+            }
+        } );
+        </script>
+        <pre><code>
+    &lt;div id=&quot;example-1&quot; class=&quot;example&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;datepicker&quot; /&gt;
+        &lt;input type=&quot;text&quot; class=&quot;datepicker&quot; /&gt;
+        &lt;input type=&quot;text&quot; class=&quot;datepicker&quot; /&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    datepicker( '.datepicker', {
+        firstDayOfWeek: 1,
+        months: {
+            short: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+            long: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+        },
+        weekdays: {
+            short: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            long: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+        }
+    } );
+    &lt;/script&gt;
+        </code></pre>
+
+        <h2>Options</h2>
+
+        <pre><code>
+    datepicker.defaults = {
+        firstDayOfWeek: 0,          // First day of week 
+        months: {                   // Month formats
+            short: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            long: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        },
+        navigateYear: true,         // Display year navigation
+        outputFormat:'%Y-%m-%d',    // Date  output format
+        weekdays: {
+            short: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            long: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        }
+    }
+        </code></pre>
+
+        <script type="text/javascript">
+        </script>
+    </body>
+</html>
