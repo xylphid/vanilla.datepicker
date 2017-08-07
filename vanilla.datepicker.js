@@ -229,6 +229,7 @@
         },
 
         setDate: function( day ) {
+            var oldDateValue = self.target.value
             var dayOfWeek = new Date(self.current.year, self.current.month, day).getDay();
             var date = self.options.outputFormat
                 .replace('%a', self.options.weekdays.short[dayOfWeek] )
@@ -241,6 +242,17 @@
                 .replace('%w', dayOfWeek )
                 .replace('%Y', self.current.year );
             self.target.value = date;
+            
+            if (date !== oldDateValue) {
+                if ("createEvent" in document) {
+                    var changeEvent = document.createEvent("HTMLEvents");
+                    changeEvent.initEvent("change", false, true);
+                    self.target.dispatchEvent(changeEvent);
+                }
+                else {
+                    self.target.fireEvent("onchange");
+                }
+            }
         },
 
         bindCalendar: function(event) {
