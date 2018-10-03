@@ -42,7 +42,7 @@
                 var current = new Date();
                 if (target) self.selected = null;
                 if (target && target.value) {
-                    var ts = Date.parse( target.value.toLowerCase() );
+                    var ts = self.parseDate( target.value );
                     current = new Date( ts );
                     self.selected = {
                         year: current.getFullYear(),
@@ -253,6 +253,41 @@
                     self.target.fireEvent("onchange");
                 }
             }
+        },
+
+        parseDate: function( date ) {
+            var acceptedFormats = ['%a', '%A', '%d', '%e', '%b', '%B', '%m', '%w', '%Y'],
+                pattern = new RegExp( self.options.outputFormat.replace(/%[a-zA-Z]/g, '(.+)') ),
+                groups = pattern.exec( self.options.outputFormat ),
+                matches = pattern.exec(date),
+                date = new Date();
+                
+            for (var i = 1; i < matches.length; i++) {
+                if (acceptedFormats.indexOf(groups[i]) == -1) {
+                    console.log( 'DatePicker : Format error' );
+                    break;
+                }
+
+                switch (groups[i]) {
+                    case '%d':
+                    case '%e':
+                        date.setDate( matches[i] );
+                        break;
+                    case '%m':
+                        date.setMonth( parseInt(matches[i]) - 1, date.getDate() );
+                        break;
+                    case '%b':
+                        var month = self.options.months.short.indexOf( matches[i] );
+                    case '%B':
+                        month = month != -1 ? month : self.options.months.long.indexOf( matches[i] );
+                        date.setMonth( month, date.getDate() );
+                        break;
+                    case '%Y':
+                        date.setYear( matches[i] );
+                        break;
+                }
+            }
+            return date;
         },
 
         bindCalendar: function(event) {
