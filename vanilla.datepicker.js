@@ -19,7 +19,9 @@
         __init__: function(){
             // Bind display on click
             document.removeEventListener('click', self.bindCalendar, false);
+            document.removeEventListener('keypress', self.keypressHandler, false);
             document.addEventListener('click', self.bindCalendar, false);
+            document.addEventListener('keypress', self.keypressHandler, false);
         },
 
         matchesReferers: function( elm ){
@@ -91,16 +93,19 @@
                 previousYear = document.createElement('div');
                 previousYear.classList.add('year-navigate');
                 previousYear.classList.add('previous');
+                previousYear.setAttribute('tabIndex', 0);
                 previousYear.innerHTML = '<<';
 
                 nextYear = document.createElement('div');
                 nextYear.classList.add('year-navigate');
                 nextYear.classList.add('next');
+                nextYear.setAttribute('tabIndex', 0);
                 nextYear.innerHTML = '>>';
             }
             previousMonth = document.createElement('div');
             previousMonth.classList.add('month-navigate');
             previousMonth.classList.add('previous');
+            previousMonth.setAttribute('tabIndex', 0);
             previousMonth.innerHTML = '<';
 
             currentMonth = document.createTextNode( 
@@ -110,6 +115,7 @@
             nextMonth = document.createElement('div');
             nextMonth.classList.add('month-navigate');
             nextMonth.classList.add('next');
+            nextMonth.setAttribute('tabIndex', 0);
             nextMonth.innerHTML = '>';
             //nextMonth.addEventListener('click', self.getNextMonth, false);
 
@@ -165,6 +171,7 @@
             weekHeader.classList.add('week-header');
             for (var i=0; i<7; i++) {
                 var dayOfWeek = document.createElement('div');
+                dayOfWeek.setAttribute('tabIndex', 0);
                 dayOfWeek.innerHTML = weekdays[i];
                 weekHeader.appendChild( dayOfWeek );
             }
@@ -202,6 +209,7 @@
                 if (self.selected && self.selected.year == self.current.year && self.selected.month == self.current.month && self.selected.day == i+1) {
                     day.classList.add('selected');
                 }
+                day.setAttribute('tabIndex', 0);
                 day.innerHTML = i+1;
                 days.push( day );
             }
@@ -309,6 +317,13 @@
                 }
                 if (target && self.matchesReferers( target )) self.show(target);
                 if (!target) self.close();
+            }
+        },
+
+        keypressHandler: function (event) {
+            var keyCode = event.which || event.keyCode;
+            if (keyCode === 13) {
+                self.bindCalendar(event);
             }
         }
     };
