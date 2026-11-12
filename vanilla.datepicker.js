@@ -237,6 +237,8 @@
         },
 
         setDate: function( day ) {
+            if (self.target.matches(':disabled')) return;
+
             var oldDateValue = self.target.value
             var dayOfWeek = new Date(self.current.year, self.current.month, day).getDay();
             var date = self.options.outputFormat
